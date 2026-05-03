@@ -1,3 +1,4 @@
+<img width="1875" height="882" alt="Ekran görüntüsü 2026-05-03 170405" src="https://github.com/user-attachments/assets/02d40cb7-3d6e-4cff-8b30-d8e21fee16b7" />
 # HisseLab: Algoritmik Trading & Karar Destek Sistemi 📈
 HisseLab, Borsa İstanbul (BIST), kripto paralar ve global piyasalar (S&P 500, DAX) için geliştirilmiş, gerçek zamanlı veri analizi ve algoritmik trade imkanı sunan kapsamlı bir Python web uygulamasıdır.
 
