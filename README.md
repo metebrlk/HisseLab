@@ -62,9 +62,12 @@ streamlit run app.py
 ## 📸 Ekran Görüntüleri
 
 Dashboard Görünümü :
+
 <img width="1882" height="851" alt="Ekran görüntüsü 2026-05-03 164700" src="https://github.com/user-attachments/assets/13a80c54-0799-4d7f-8ec2-7c8c76043d0b" /><img width="1866" height="905" alt="Ekran görüntüsü 2026-05-03 170243" src="https://github.com/user-attachments/assets/bf34eb7d-e0f4-49bd-b49c-d5d147b0949f" />
 
+
 Backtest Görünümü : 
+
 <img width="1875" height="882" alt="Ekran görüntüsü 2026-05-03 170405" src="https://github.com/user-attachments/assets/b06d6706-14da-4fec-bc98-a330f7562e5b" />
 
 
