@@ -1,0 +1,48 @@
+değişim fiyat sıralamasını yaparken çok bekliyoruz ve running fetch quick quote() diye bir fonksiyon çalıştığı görülüyor bu fonksionun çalıştığı hiçbir yerde görülmesin 
+//200
+takip listesindeki hisseler borsa tarayıcıdaki listesindeki şirketler gibi yakın 
+//200
+işaretçinin olduğu tarih o hisse ne kadar değişmiş falan normalde hangi veriler gösteriliyorsa onlar grafiğin sol üstünde gösterilsin
+//
+<div class="panel"></div> diye html kodları var her sayfada ve bunlar gereksiz ve kötü duruyorlar her sayfada bir bölgeyle bir bölgeyi ayırmak için kullanılıyor bunları kaldır
+//200
+takip listemdekiler ve temam kaydedilmiyor çıkış yapıp tekrar girdiğimde sorun yok ama web sitesini kapatıp tekrar açtığımda değişmiş eski haline gelmiş oluyor 
+//
+al sat sinyalleri veriliyor lakin mesela rsi üzerinden anlat sasaya rsi uyguladığımda habire al sinyali veriyor ama hisse sürekli düşüyor Toplam K/Z
++167.30%
+Başlangıç / Bitiş
+$10,000 → $26,730
+Max Drawdown
+-78.20% gibi bir info da veriyor mantıken bu infonun çok yanlış olması lazım
+//
+marketteki grafikte hacmi ayrı panelde tıkladıktan sonra indikatör seçersek hacim ayrı panelde işaretli kalıyor ama hacim birleşiyor
+//200
+sayfa sayısını arttırınca hala 40 sıkışıyor 0 aşağıya iniyor
+//200
+göçe başlamadan önce sql tablolarımızda değiştirmemiz gereken bir şey varsa şimdiden değiştirmemiz gerek bence bu tabloları daha büyük güncel esnek sorunsuz bir yapıya sokabilir miyiz kullanıcı adına daha çok farklı şeyler tutmamız gerekebilir istatistiklerini stratejilerini en başarılı olanları tutup kendi yararıma da kullanabilirim mesela ,,,  sql kodlarına biraz aşinayım ama yinede her kodu satırı öğrenmek istiyorum aynı şekilde elimde bir javascript jquey temelleri öğreten bir kurs var bu kursu bitirsem sorunları kendim de halledebilir miyim uğraşarak ve mantıklı olurmu kurs 16 saat 
+
+streamlit.errors.StreamlitValueAboveMaxError: The `value` 1000.0 is greater than the `max_value` 10.0.
+
+File "C:\Users\kamik\OneDrive\Belgeler\Yazılım\HisseLab\app.py", line 3219, in <module>
+    main()
+    ~~~~^^
+File "C:\Users\kamik\OneDrive\Belgeler\Yazılım\HisseLab\app.py", line 3213, in main
+    if   "Dashboard" in page: page_dashboard(user)
+                              ~~~~~~~~~~~~~~^^^^^^
+File "C:\Users\kamik\OneDrive\Belgeler\Yazılım\HisseLab\app.py", line 2673, in page_dashboard
+    add_amount = st.number_input("Tutar ($)", min_value=10.0, max_value=float(bal) if bal > 10 else 10.0,
+                                 value=1000.0, step=100.0, key="port_add_amount")
+File "C:\Users\kamik\AppData\Roaming\Python\Python314\site-packages\streamlit\runtime\metrics_util.py", line 532, in wrapped_func
+    result = non_optional_func(*args, **kwargs)
+File "C:\Users\kamik\AppData\Roaming\Python\Python314\site-packages\streamlit\elements\widgets\number_input.py", line 448, in number_input
+    return self._number_input(
+           ~~~~~~~~~~~~~~~~~~^
+        label=label,
+        ^^^^^^^^^^^^
+    ...<16 lines>...
+        ctx=ctx,
+        ^^^^^^^^
+    )
+    ^
+File "C:\Users\kamik\AppData\Roaming\Python\Python314\site-packages\streamlit\elements\widgets\number_input.py", line 594, in _number_input
+    raise StreamlitValueAboveMaxError(value=value, max_value=max_value)
