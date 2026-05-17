@@ -237,133 +237,139 @@ PAGE_SIZE = 15
 # INDICATOR DEFINITIONS  — 20 professional indicators
 # ─────────────────────────────────────────────────────────────────────────────
 IND_META = {
+    # ── Fiyat ──────────────────────────────────────────────────────────────
+    "Fiyat (Close)": {
+        "category": "overlay", "label": "Fiyat (Close)",
+        "params": [], "conditions": [">", "<", ">=", "<="],
+        "cross_targets": [], "def_thr": 0.0
+    },
     # ── Oscillators ──────────────────────────────────────────────────────────
     "RSI": {
         "category": "oscillator", "label": "RSI — Relative Strength Index",
         "params": [("period",int,14,2,200)],
         "conditions": [">","<",">=","<=","Yukarı Kesen","Aşağı Kesen"],
-        "cross_targets": ["30","50","70"],
+        "cross_targets": ["30","50","70"], "def_thr": 30.0
     },
     "MACD": {
         "category": "oscillator", "label": "MACD — Moving Avg Convergence",
         "params": [("fast",int,12,2,100),("slow",int,26,2,200),("signal",int,9,2,100)],
         "conditions": [">","<",">=","<=","Yukarı Kesen (Signal)","Aşağı Kesen (Signal)","Sıfırı Yukarı Kesti","Sıfırı Aşağı Kesti"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 0.0
     },
     "Stochastic": {
         "category": "oscillator", "label": "Stochastic Oscillator (%K/%D)",
         "params": [("k_period",int,14,1,100),("d_period",int,3,1,50),("smooth",int,3,1,20)],
         "conditions": [">","<","Yukarı Kesen","Aşağı Kesen","Aşırı Alım (>80)","Aşırı Satım (<20)"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 20.0
     },
     "ADX": {
         "category": "oscillator", "label": "ADX — Average Directional Index",
         "params": [("period",int,14,2,100)],
         "conditions": [">","<",">=","<="],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 25.0
     },
     "CCI": {
         "category": "oscillator", "label": "CCI — Commodity Channel Index",
         "params": [("period",int,20,5,200)],
         "conditions": [">","<","Yukarı Kesen","Aşağı Kesen"],
-        "cross_targets": ["100","-100","0"],
+        "cross_targets": ["100","-100","0"], "def_thr": 0.0
     },
     "Williams %R": {
         "category": "oscillator", "label": "Williams %R",
         "params": [("period",int,14,2,100)],
         "conditions": [">","<","Aşırı Alım (>-20)","Aşırı Satım (<-80)"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": -80.0
     },
     "MFI": {
         "category": "oscillator", "label": "MFI — Money Flow Index",
         "params": [("period",int,14,2,100)],
         "conditions": [">","<","Yukarı Kesen","Aşağı Kesen"],
-        "cross_targets": ["20","80"],
+        "cross_targets": ["20","80"], "def_thr": 20.0
     },
     "ROC": {
         "category": "oscillator", "label": "ROC — Rate of Change (%)",
         "params": [("period",int,12,1,200)],
         "conditions": [">","<","Sıfırı Yukarı Kesti","Sıfırı Aşağı Kesti"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 0.0
     },
     "OBV": {
         "category": "oscillator", "label": "OBV — On-Balance Volume",
         "params": [],
         "conditions": ["Artıyor","Azalıyor"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 0.0
     },
     # ── Overlays ─────────────────────────────────────────────────────────────
     "SMA": {
         "category": "overlay", "label": "SMA — Simple Moving Average",
         "params": [("period",int,20,2,500)],
         "conditions": ["Fiyat Üstünde","Fiyat Altında","Yukarı Kesti","Aşağı Kesti"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 0.0
     },
     "EMA": {
         "category": "overlay", "label": "EMA — Exponential Moving Average",
         "params": [("period",int,20,2,500)],
         "conditions": ["Fiyat Üstünde","Fiyat Altında","Yukarı Kesti","Aşağı Kesti"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 0.0
     },
     "Bollinger": {
         "category": "overlay", "label": "Bollinger Bands",
         "params": [("period",int,20,2,200),("std_dev",float,2.0,0.5,5.0)],
         "conditions": ["Fiyat Üst Band Üstünde","Fiyat Alt Band Altında",
                        "Üst Bandı Yukarı Kesti","Alt Bandı Aşağı Kesti","%B > 1","%B < 0"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 0.0
     },
     "Ichimoku": {
         "category": "overlay", "label": "Ichimoku Cloud",
         "params": [("tenkan",int,9,5,50),("kijun",int,26,10,100),("senkou_b",int,52,20,200)],
         "conditions": ["Fiyat Bulut Üstünde","Fiyat Bulut Altında",
                        "Tenkan Kijun'u Yukarı Kesti","Tenkan Kijun'u Aşağı Kesti"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 0.0
     },
     "VWAP": {
         "category": "overlay", "label": "VWAP — Volume Weighted Avg Price",
         "params": [],
         "conditions": ["Fiyat VWAP Üstünde","Fiyat VWAP Altında",
                        "VWAP'ı Yukarı Kesti","VWAP'ı Aşağı Kesti"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 0.0
     },
     "ATR": {
         "category": "overlay", "label": "ATR — Average True Range",
         "params": [("period",int,14,2,100)],
         "conditions": [">","<"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 0.0
     },
     "Parabolic SAR": {
         "category": "overlay", "label": "Parabolic SAR",
         "params": [("step",float,0.02,0.01,0.1),("max_step",float,0.2,0.1,0.5)],
         "conditions": ["SAR Fiyatın Altında (Yükseliş)","SAR Fiyatın Üstünde (Düşüş)",
                        "SAR Yön Değiştirdi (Yukarı)","SAR Yön Değiştirdi (Aşağı)"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 0.0
     },
     "Keltner": {
         "category": "overlay", "label": "Keltner Channel",
         "params": [("period",int,20,5,100),("atr_mult",float,2.0,1.0,4.0)],
         "conditions": ["Fiyat Üst Kanal Üstünde","Fiyat Alt Kanal Altında",
                        "Üst Kanalı Yukarı Kesti","Alt Kanalı Aşağı Kesti"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 0.0
     },
     "Donchian": {
         "category": "overlay", "label": "Donchian Channel",
         "params": [("period",int,20,5,200)],
         "conditions": ["Yeni 20-Bar Yüksek","Yeni 20-Bar Düşük",
                        "Orta Bandın Üstünde","Orta Bandın Altında"],
-        "cross_targets": [],
+        "cross_targets": [], "def_thr": 0.0
     },
     "Aroon": {
         "category": "oscillator", "label": "Aroon Oscillator",
         "params": [("period",int,25,5,100)],
         "conditions": [">","<","Yukarı Kesen","Aşağı Kesen"],
-        "cross_targets": ["0","50","-50"],
+        "cross_targets": ["0","50","-50"], "def_thr": 0.0
     },
     "Ultimate": {
         "category": "oscillator", "label": "Ultimate Oscillator",
         "params": [("p1",int,7,2,50),("p2",int,14,2,100),("p3",int,28,5,200)],
         "conditions": [">","<","Yukarı Kesen","Aşağı Kesen"],
-        "cross_targets": ["30","50","70"],
+        "cross_targets": ["30","50","70"], "def_thr": 30.0
     },
 }
 
@@ -377,6 +383,7 @@ OSC_INDS      = [k for k,v in IND_META.items() if v["category"]=="oscillator"]
 DEFAULT_THEME = {
     "accent":"#00d4ff","accent_rgb":"0,212,255",
     "bg_primary":"#080c14","bg_card":"#111827","border":"#1e2d45","font_size":"15",
+    "txt_color":"#e8f0fe","txt2_color":"#8ba3c9","muted_color":"#4a6080","is_light":False,
 }
 def get_theme(): return st.session_state.get("theme", DEFAULT_THEME.copy())
 
@@ -395,12 +402,83 @@ def inject_css():
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Sora:wght@300;400;500;600&display=swap');
 :root{{
-    --bg:{t['bg_primary']};--card:{t['bg_card']};--hover:#1a2235;--brd:{t['border']};
+    --bg:{t['bg_primary']};--card:{t['bg_card']};
+    --hover:{'rgba(0,0,0,.06)' if t.get('is_light') else '#1a2235'};
+    --brd:{t['border']};
     --acc:{t['accent']};--acc-rgb:{t['accent_rgb']};
-    --grn:#00e676;--red:#ff4757;--gld:#ffd700;
-    --txt:#e8f0fe;--txt2:#8ba3c9;--muted:#4a6080;--fs:{t['font_size']}px;
+    --grn:{'#1a9e50' if t.get('is_light') else '#00e676'};
+    --red:{'#d32f2f' if t.get('is_light') else '#ff4757'};
+    --gld:{'#b8860b' if t.get('is_light') else '#ffd700'};
+    --txt:{t.get('txt_color', '#e8f0fe')};
+    --txt2:{t.get('txt2_color', '#8ba3c9')};
+    --muted:{t.get('muted_color', '#4a6080')};
+    --fs:{t['font_size']}px;
+    --is-light:{1 if t.get('is_light') else 0};
+    --sym-col:{t['accent'] if not t.get('is_light') else t.get('txt_color', '#111827')};
 }}
-html,body,.stApp{{background:var(--bg)!important;font-family:'Sora',sans-serif;font-size:var(--fs);}}
+html,body,.stApp{{background:var(--bg)!important;font-family:'Sora',sans-serif;font-size:var(--fs);color:var(--txt)!important;}}
+/* All native Streamlit text elements inherit theme color */
+p,span,label,.stMarkdown,.stText,
+[data-testid="stMarkdownContainer"] p,
+[data-testid="stMarkdownContainer"] span,
+.stRadio label,[data-testid="stWidgetLabel"],
+[data-testid="stCaptionContainer"],[data-testid="stMetricLabel"],
+[data-testid="stMetricValue"],[data-testid="stMetricDelta"],
+.stSelectbox label,.stTextInput label,.stSlider label,
+.stNumberInput label,.stCheckbox label,.stToggle label,
+.stDateInput label,.stTimeInput label,.stColorPicker label{{
+    color:var(--txt)!important;}}
+/* Secondary / muted text */
+[data-testid="stMetricLabel"] small,
+small,.caption,.stCaption{{color:var(--txt2)!important;}}
+/* Selectbox ve Inputlar */
+[data-baseweb="select"] > div, [data-baseweb="input"] > div, [data-baseweb="textarea"] > div {{
+    background-color: var(--card) !important; border-color: var(--brd) !important;
+}}
+[data-baseweb="select"] > div > div, [data-baseweb="input"] input, [data-baseweb="textarea"] textarea {{
+    background-color: transparent !important; color: var(--txt) !important;
+}}
+/* Açılır Menü (Dropdown) ve Listeler */
+div[data-baseweb="popover"] > div, div[data-baseweb="menu"] > div, ul[role="listbox"] {{
+    background-color: var(--card) !important;
+    color: var(--txt) !important;
+    border: 1px solid var(--brd) !important;
+}}
+li[role="option"] {{ background: transparent !important; color: var(--txt) !important; }}
+li[role="option"]:hover {{ background: rgba(var(--acc-rgb), 0.1) !important; }}
+
+/* İndikatör Popover Butonu */
+div[data-testid="stPopover"] > button {{
+    background-color: var(--card) !important;
+    color: var(--txt) !important;
+    border: 1px solid var(--brd) !important;
+}}
+div[data-testid="stPopoverBody"] {{ background-color: var(--card) !important; }}
+
+/* Toggle Switch Görünürlüğü */
+div[data-testid="stToggle"] label {{ color: var(--txt) !important; }}
+div[data-testid="stToggle"] div[data-baseweb="checkbox"] > div:first-child {{ background-color: var(--brd) !important; }}
+div[data-testid="stToggle"] div[data-baseweb="checkbox"] > div:first-child > div {{ background-color: var(--acc) !important; }}
+/* Slider track / thumb color */
+[data-testid="stSlider"] [role="slider"]{{background:var(--acc)!important;}}
+[data-testid="stSlider"] [data-testid="stSliderTrack"]>div:first-child{{background:var(--brd)!important;}}
+[data-testid="stSlider"] [data-testid="stSliderTrack"]>div:last-child{{background:var(--acc)!important;}}
+/* Karanlık kutu düzeltmesi: tüm baseweb konteynerler */
+[data-baseweb="base-input"]{{background:var(--card)!important;}}
+[data-baseweb="select"]>div:first-child{{background:var(--card)!important;border-color:var(--brd)!important;}}
+[data-baseweb="popover"] *{{color:var(--txt)!important;}}
+[data-baseweb="menu"] ul{{background:var(--card)!important;}}
+[data-baseweb="menu"] li,
+[data-baseweb="option"]{{background:var(--card)!important;color:var(--txt)!important;}}
+[data-baseweb="menu"] li:hover,
+[data-baseweb="option"]:hover{{background:rgba(var(--acc-rgb),.12)!important;}}
+/* Popover body arka planı */
+[data-testid="stPopoverBody"]>div{{background:var(--card)!important;}}
+[data-testid="stPopoverBody"] *:not(button):not(label){{color:var(--txt)!important;}}
+/* Checkbox / toggle track */
+[data-testid="stCheckbox"] [data-baseweb="checkbox"]{{border-color:var(--brd)!important;}}
+.stToggle [role="switch"]{{background:var(--brd)!important;}}
+.stToggle [role="switch"][aria-checked="true"]{{background:var(--acc)!important;}}
 /* Zero wasted vertical space */
 .main .block-container{{
     padding:0rem 1.4rem 0.8rem!important;
@@ -417,13 +495,15 @@ h1,h2,h3,h4{{font-family:'Space Mono',monospace!important;color:var(--txt)!impor
 /* Remove top padding injected by Streamlit in wide mode */
 section[data-testid="stSidebar"]+div>div:first-child{{padding-top:0!important;margin-top:0!important;}}
 [data-testid="stStatusWidget"]{{display:none!important;}}
-[data-testid="stSidebar"]{{background:linear-gradient(180deg,#080c14,#0a1020)!important;
+[data-testid="stSidebar"]{{background:var(--bg)!important;
     border-right:1px solid var(--brd)!important;min-width:230px!important;max-width:260px!important;}}
 [data-testid="collapsedControl"],[data-testid="stSidebarCollapseButton"],
 [data-testid="stSidebarCollapseButton"] button,
 button[data-testid="stBaseButton-headerNoPadding"],
 button[aria-label="Close sidebar"],button[aria-label="Open sidebar"]{{display:none!important;}}
 [data-testid="stSidebar"] *{{color:var(--txt2);}}
+[data-testid="stSidebar"] h1,[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3,[data-testid="stSidebar"] h4{{color:var(--txt)!important;}}
 [data-testid="stSidebar"] .stRadio label{{color:var(--txt2)!important;font-size:.86rem;
     padding:.3rem .4rem;border-radius:6px;transition:all .15s;}}
 [data-testid="stSidebar"] .stRadio label:hover{{color:var(--txt)!important;background:rgba(255,255,255,.05);}}
@@ -470,15 +550,14 @@ button[aria-label="Close sidebar"],button[aria-label="Open sidebar"]{{display:no
     letter-spacing:0!important;line-height:1!important;}}
 [data-testid="stButton"] button[kind="tertiary"]:hover{{
     color:var(--red)!important;background:rgba(255,71,87,.08)!important;}}
-/* ── Sort header buttons: ALL tertiary buttons white (global) ── */
-/* This targets ALL tertiary buttons sitewide so no wrapper div needed */
+/* ── Sort header buttons: theme-aware text color (global) ── */
 [data-testid="stButton"] button[kind="tertiary"] p {{
-    color:#ffffff!important;
+    color:var(--txt2)!important;
     font-size:0.72rem!important;
     margin-bottom:0!important;
 }}
 [data-testid="stButton"] button[kind="tertiary"] {{
-    color:#ffffff!important;
+    color:var(--txt2)!important;
     font-size:0.72rem!important;
     font-family:'Space Mono',monospace!important;
     text-transform:uppercase!important;
@@ -530,16 +609,22 @@ button[aria-label="Close sidebar"],button[aria-label="Open sidebar"]{{display:no
 /* Table row cells */
 .tbl-row-cell{{
     padding:.24rem 0 .24rem .1rem;
-    border-bottom:1px solid #0d1421;
+    border-bottom:1px solid var(--brd);
     margin:0!important;
     line-height:1;
 }}
 .element-container:has(.tbl-row-cell){{
     margin-top:0!important;margin-bottom:0!important;
 }}
+/* OVERRIDE: Streamlit global kurallarını ezmek için yüksek öncelikli sınıflar */
+[data-testid="stMarkdownContainer"] .txt-sym, span.txt-sym, div.txt-sym {{ color: var(--sym-col) !important; font-weight: 600; font-family: 'Space Mono', monospace; font-size: .78rem; }}
+[data-testid="stMarkdownContainer"] .txt-prc, span.txt-prc, div.txt-prc {{ color: var(--txt) !important; font-family: 'Space Mono', monospace; font-size: .78rem; }}
+[data-testid="stMarkdownContainer"] .txt-pos, span.txt-pos, div.txt-pos {{ color: var(--grn) !important; font-family: 'Space Mono', monospace; font-size: .78rem; }}
+[data-testid="stMarkdownContainer"] .txt-neg, span.txt-neg, div.txt-neg {{ color: var(--red) !important; font-family: 'Space Mono', monospace; font-size: .78rem; }}
+[data-testid="stMarkdownContainer"] .txt-neu, span.txt-neu, div.txt-neu {{ color: var(--muted) !important; font-family: 'Space Mono', monospace; font-size: .78rem; }}
 /* ── Indicator multiselect — modern pill design ── */
 .stMultiSelect>div>div{{
-    background:linear-gradient(135deg,rgba(13,20,33,.95),rgba(17,24,39,.9))!important;
+    background:var(--card)!important;
     border:1px solid var(--brd)!important;
     border-radius:10px!important;
     min-height:40px!important;
@@ -600,7 +685,7 @@ hr{{border-color:var(--brd)!important;margin:1rem 0!important;}}
 ::-webkit-scrollbar{{width:4px;}}::-webkit-scrollbar-track{{background:var(--bg);}}
 ::-webkit-scrollbar-thumb{{background:var(--brd);border-radius:4px;}}
 #MainMenu,footer,header{{visibility:hidden;}}.stDeployButton{{display:none;}}
-.param-box{{background:rgba(0,212,255,.04);border:1px solid rgba(0,212,255,.15);
+.param-box{{background:rgba(var(--acc-rgb),.04);border:1px solid rgba(var(--acc-rgb),.15);
     border-radius:8px;padding:.75rem .9rem;margin-top:.4rem;}}
 /* ── Bot Status Card ── */
 .bot-card{{background:var(--card);border:1px solid var(--brd);border-radius:12px;
@@ -611,13 +696,13 @@ hr{{border-color:var(--brd)!important;margin:1rem 0!important;}}
 .bot-card-ind{{color:var(--txt2);font-size:.76rem;margin:.15rem 0;}}
 .bot-card-cond{{color:var(--gld);font-size:.72rem;font-family:'Space Mono',monospace;}}
 /* ── Terminal Log ── */
-.terminal{{background:#020914;border:1px solid #1a3a1a;border-radius:8px;
+.terminal{{background:var(--card);border:1px solid var(--brd);border-radius:8px;
     padding:.7rem .9rem;font-family:'Space Mono',monospace;font-size:.72rem;
-    color:#00e676;line-height:1.7;max-height:240px;overflow-y:auto;
-    box-shadow:inset 0 0 20px rgba(0,230,118,.03);}}
-.terminal .t-ts{{color:#2a6b2a;}}
-.terminal .t-trig{{color:#00e676;font-weight:700;}}
-.terminal .t-none{{color:#1d5c3a;}}
+    color:var(--grn);line-height:1.7;max-height:240px;overflow-y:auto;
+    box-shadow:inset 0 0 20px rgba(0,0,0,.05);}}
+.terminal .t-ts{{color:var(--muted);}}
+.terminal .t-trig{{color:var(--grn);font-weight:700;}}
+.terminal .t-none{{color:var(--txt2);}}
 /* ── Paper Trading Card ── */
 .paper-card{{background:linear-gradient(135deg,rgba(var(--acc-rgb),.08),rgba(var(--acc-rgb),.03));
     border:1px solid rgba(var(--acc-rgb),.25);border-radius:12px;padding:.9rem 1.2rem;
@@ -630,16 +715,16 @@ hr{{border-color:var(--brd)!important;margin:1rem 0!important;}}
 .tj-tbl{{width:100%;border-collapse:collapse;font-family:'Space Mono',monospace;font-size:.72rem;}}
 .tj-tbl th{{color:var(--muted);font-size:.6rem;text-transform:uppercase;
     letter-spacing:.1em;padding:.35rem .5rem;border-bottom:1px solid var(--brd);text-align:left;}}
-.tj-tbl td{{padding:.32rem .5rem;border-bottom:1px solid #0a1525;}}
+.tj-tbl td{{padding:.32rem .5rem;border-bottom:1px solid var(--brd);}}
 .tj-win{{color:#00e676;}} .tj-loss{{color:#ff4757;}}
 .tj-buy{{color:var(--acc);}} .tj-sell{{color:var(--muted);}}
 /* ── Lightweight Charts container — visible border + subtle glow ── */
 .lwc-frame{{
-    border:1px solid #2e4a70!important;
+    border:1px solid var(--brd)!important;
     border-radius:8px!important;
     overflow:hidden!important;
-    box-shadow:0 0 0 1px rgba(46,74,112,.6),
-               0 2px 16px rgba(0,0,0,.35)!important;
+    box-shadow:0 0 0 1px rgba(var(--acc-rgb),.12),
+               0 2px 16px rgba(0,0,0,.2)!important;
     margin-top:.3rem!important;
 }}
 .lwc-frame iframe{{
@@ -934,7 +1019,7 @@ def calc_adx(df,p=14):
 def calc_cci(df,p=20):
     tp=(df["High"]+df["Low"]+df["Close"])/3
     ma=tp.rolling(p).mean()
-    md=tp.rolling(p).apply(lambda x:(x-x.mean()).abs().mean(),raw=True)
+    md = tp.rolling(p).apply(lambda x: np.abs(x - x.mean()).mean(), raw=True)
     return (tp-ma)/(0.015*md+1e-10)
 
 def calc_willr(df,p=14):
@@ -1040,6 +1125,12 @@ def build_entry_signal(df, ind, params, condition, threshold):
     """
     c   = df["Close"]
     thr = float(threshold) if threshold is not None else 0.0
+
+    if ind == "Fiyat (Close)":
+        if condition == ">": return c > thr
+        if condition == "<": return c < thr
+        if condition == ">=": return c >= thr
+        if condition == "<=": return c <= thr
 
     def cross_above(a, b): return (a > b) & (a.shift(1) <= b.shift(1))
     def cross_below(a, b): return (a < b) & (a.shift(1) >= b.shift(1))
@@ -1162,24 +1253,23 @@ def run_backtest(df,ind,params,condition,threshold,capital=10_000.0,
     
     # ✓ FİKS: Lookahead bias kaldırıldı — entry_price bfill (geriye dönük doldurma) kullanıldı
     # Entry olduğu mumun Close fiyatını al ve geriye doğru doldur (entry sırasındaki fiyat)
-    df["entry_price"] = df["Close"].where(df["entry"]).bfill().where(df["entry"].cumsum() > 0)
+    df["entry_price"] = df["Close"].where(df["entry"]).ffill().where(df["entry"].cumsum() > 0)
     
     # Exit logic: reversal signal + DİNAMİK TP/SL
     opposite_condition = _invert_condition(condition)
-    
     try:
-        exit_signal = build_entry_signal(df, ind, params, opposite_condition, threshold).fillna(False)
+        exit1 = build_entry_signal(df, ind, params, opposite_condition, threshold).fillna(False)
+        if ind2 and cond2 is not None:
+            opp2 = _invert_condition(cond2)
+            exit2 = build_entry_signal(df, ind2, params2 or {}, opp2, thr2).fillna(False)
+            exit_signal = (exit1 | exit2)  # Herhangi biri bozulursa çık (OR Logic)
+        else:
+            exit_signal = exit1
     except Exception as e:
-        # If reversal fails, use TP/SL only
         print(f"[WARN] exit_signal buildup failed: {e}. Using TP/SL only.")
         exit_signal = pd.Series(False, index=df.index)
     
-    # YENİ DİNAMİK TP/SL MANTIĞI
-    tp_cond = (df["Close"] >= df["entry_price"] * (1 + tp_pct/100.0)) if tp_pct > 0 else pd.Series(False, index=df.index)
-    sl_cond = (df["Close"] <= df["entry_price"] * (1 - sl_pct/100.0)) if sl_pct > 0 else pd.Series(False, index=df.index)
-    exit_tp_sl = tp_cond | sl_cond
-    
-    df["exit"] = (exit_signal | exit_tp_sl) & df["entry_price"].notna() & ~df["entry"]
+    df["exit_signal"] = exit_signal
     
     cash,shares,in_t=capital,0.0,False; eq,trades,ep=[],[],0.0
     # KANAYAN YARAYI ÇÖZEN KISIM: Sadece gerçek işlem anlarını kaydet
@@ -1190,10 +1280,14 @@ def run_backtest(df,ind,params,condition,threshold,capital=10_000.0,
         p=float(r["Close"])
         if not in_t and r["entry"]: 
             shares,ep,cash,in_t=cash/p,p,0.0,True
-            actual_entries.loc[idx] = True # Sadece cüzdandan para çıktığında
-        elif in_t and r["exit"]:
-            trades.append(shares*p>shares*ep); cash,shares,in_t=shares*p,0.0,False
-            actual_exits.loc[idx] = True # Sadece hisse satıldığında
+            actual_entries.loc[idx] = True
+        elif in_t:
+            is_tp = (tp_pct > 0 and p >= ep * (1 + tp_pct/100.0))
+            is_sl = (sl_pct > 0 and p <= ep * (1 - sl_pct/100.0))
+            is_ex = bool(r.get("exit_signal", False))
+            if is_ex or is_tp or is_sl:
+                trades.append(shares*p>shares*ep); cash,shares,in_t=shares*p,0.0,False
+                actual_exits.loc[idx] = True
         eq.append(cash+shares*p)
     
     # ── ZORLA KAPAT: Son pozisyon açıksa, son gün fiyatından kapatsın ─────────
@@ -1227,12 +1321,15 @@ def run_backtest(df,ind,params,condition,threshold,capital=10_000.0,
 # ── LWC theme helpers ────────────────────────────────────────────────────────
 def _lwc_layout(height: int = 460) -> dict:
     t = get_theme()
-    grid_color   = "#2a3f5f"
-    border_color = "#2e4a70"
+    is_light = t.get("is_light", False)
+    grid_color   = "#dee2e6" if is_light else "#2a3f5f"
+    border_color = "#ced4da" if is_light else "#2e4a70"
+    text_color   = t.get("txt_color", "#c8d6e8")
+    
     return {
         "layout": {
             "background": {"type": "solid", "color": t["bg_card"]},
-            "textColor":  "#c8d6e8",
+            "textColor":  text_color,
             "fontSize":   12,
             "fontFamily": "Space Mono, monospace",
         },
@@ -1242,38 +1339,12 @@ def _lwc_layout(height: int = 460) -> dict:
         },
         "crosshair": {
             "mode": 0,
-            "vertLine": {
-                "color":                "#93b3d8",
-                "width":                1,
-                "style":                2,
-                "visible":              True,
-                "labelVisible":         True,
-                "labelBackgroundColor": "#1e3a5f",
-            },
-            "horzLine": {
-                "color":                "#93b3d8",
-                "width":                1,
-                "style":                2,
-                "visible":              True,
-                "labelVisible":         True,
-                "labelBackgroundColor": "#1e3a5f",
-            },
+            "vertLine": {"color": "#93b3d8", "width": 1, "style": 2, "visible": True, "labelVisible": True, "labelBackgroundColor": t.get("bg_primary")},
+            "horzLine": {"color": "#93b3d8", "width": 1, "style": 2, "visible": True, "labelVisible": True, "labelBackgroundColor": t.get("bg_primary")},
         },
-        "rightPriceScale": {
-            "borderColor":  border_color,
-            "borderVisible": True,
-            "scaleMargins": {"top": 0.05, "bottom": 0.05},
-        },
+        "rightPriceScale": {"borderColor": border_color, "borderVisible": True, "scaleMargins": {"top": 0.05, "bottom": 0.05}},
         "leftPriceScale":  {"visible": False},
-        "timeScale": {
-            "borderColor":    border_color,
-            "borderVisible":  True,
-            "timeVisible":    True,
-            "secondsVisible": False,
-            "barSpacing":     8,
-            "fixLeftEdge":    False,
-            "fixRightEdge":   False,
-        },
+        "timeScale": {"borderColor": border_color, "borderVisible": True, "timeVisible": True, "secondsVisible": False, "barSpacing": 8},
     }
 
 def _df_to_ohlcv(df: pd.DataFrame) -> tuple[list, list]:
@@ -1639,17 +1710,8 @@ def chart_dashboard_lwc(df: pd.DataFrame, symbol: str,
     if not sep_vol:
         main_series.append(vol_inline)
 
-    # Default SMA 20 when no indicators selected
-    if not inds:
-        sma20 = calc_sma(c, 20)
-        main_series.append({
-            "type":"Line","data":_series_to_lwc(sma20, t["accent"]),
-            "options":{"color":t["accent"],"lineWidth":1,"lineStyle":2,
-                       "title":"SMA 20","priceLineVisible":False}
-        })
-    else:
-        for ind_name in inds:
-            main_series.extend(_make_overlay_series(ind_name))
+    for ind_name in inds:
+        main_series.extend(_make_overlay_series(ind_name))
 
     # ── Assemble main chart layout (watermark removed — legend handles OHLC) ───
     main_chart_layout = {
@@ -1722,6 +1784,9 @@ def chart_with_indicator_lwc(df: pd.DataFrame, symbol: str,
                     "text":     "SAT",
                     "size":     1,
                 })
+
+    # Lightweight Charts kuralı: Marker'lar zamana göre kesinlikle sıralı olmalıdır!
+    markers = sorted(markers, key=lambda m: m["time"])
 
     # Candle series with markers
     candle_series = {
@@ -2022,7 +2087,7 @@ def render_tv_widget(api_sym: str, height: int = 560) -> None:
     "symbol": "{tv_sym}",
     "interval": "D",
     "timezone": "Europe/Istanbul",
-    "theme": "dark",
+    "theme": "light" if t.get("is_light", False) else "dark",
     "style": "1",
     "locale": "tr",
     "toolbar_bg": "#{bg_color}",
@@ -2059,53 +2124,58 @@ def mc(label,value,sub="",cls=""):
     st.markdown(f'<div class="mc {cls}"><div class="mc-lbl">{label}</div>'
                 f'<div class="mc-val">{value}</div>{sub_html}</div>',unsafe_allow_html=True)
 
-def indicator_form(prefix:str):
-    """Dynamic indicator form. Returns (ind, params, condition, threshold)."""
-    # Build display labels safely — no split("—") IndexError risk
-    ind_display_options = []
-    for k,v in IND_META.items():
-        label_parts = v['label'].split('—')
-        short = label_parts[1].strip() if len(label_parts) > 1 else v['label']
-        ind_display_options.append(f"{k} — {short}")
+def indicator_form(prefix:str, symbol:str=None, is_live:bool=False):
+    ind_display_options = [f"{k} — {v['label'].split('—')[-1].strip() if '—' in v['label'] else v['label']}" for k,v in IND_META.items() if is_live or k != "Fiyat (Close)"]
 
-    chosen = st.selectbox("İndikatör", ind_display_options, key=f"{prefix}_ind")
-    ind = chosen.split(" — ")[0].strip()   # safe: always has " — " from our format above
+    if is_live:
+        c1, c2, c3, c4 = st.columns([2.5, 1.5, 1.5, 1.5])
+        with c1: chosen = st.selectbox("İndikatör", ind_display_options, key=f"{prefix}_ind")
+        vis = "visible"
+    else:
+        chosen = st.selectbox("İndikatör", ind_display_options, key=f"{prefix}_ind", label_visibility="collapsed")
+        c1, c2, c3 = st.columns([1, 1.5, 1.5])
+        c4 = c3 # Backtest'te c4 yok, c3 içine yazar
+        vis = "collapsed"
+
+    ind = chosen.split(" — ")[0].strip()
     meta=IND_META[ind]; params:dict={}
-    if meta["params"]:
-        pcols=st.columns(len(meta["params"]))
-        for col,(pname,ptype,default,pmin,pmax) in zip(pcols,meta["params"]):
-            with col:
-                lbl={"period":"Periyot","fast":"Fast","slow":"Slow","signal":"Signal",
-                     "std_dev":"Std Sapma","k_period":"K Periyot","d_period":"D Periyot",
-                     "smooth":"Düzleştirme","tenkan":"Tenkan","kijun":"Kijun",
-                     "senkou_b":"Senkou B","step":"Adım","max_step":"Maks Adım",
-                     "atr_mult":"ATR Çarpanı","p1":"Hızlı","p2":"Orta","p3":"Yavaş"}.get(pname,pname)
-                if ptype is int:
-                    params[pname]=st.number_input(lbl,int(pmin),int(pmax),int(default),key=f"{prefix}_{pname}")
-                else:
-                    params[pname]=st.number_input(lbl,float(pmin),float(pmax),float(default),step=0.01,key=f"{prefix}_{pname}")
-    cond_col,thr_col=st.columns([1.5,1.5])
-    with cond_col:
-        condition=st.selectbox("Şart",meta["conditions"],key=f"{prefix}_cond")
-    threshold:float|None=None
-    is_numeric=condition in (">","<",">=","<=")
-    with thr_col:
+
+    with c1 if not is_live else c4:
+        if meta["params"]:
+            pname, ptype, default, pmin, pmax = meta["params"][0]
+            lbl = {"period":"Periyot","fast":"Fast","slow":"Slow","signal":"Signal","std_dev":"Sapma","k_period":"K","d_period":"D","smooth":"Düzleştir","tenkan":"Tenkan","kijun":"Kijun","senkou_b":"Senkou","step":"Adım","max_step":"Maks","atr_mult":"ATR","p1":"Hızlı","p2":"Orta","p3":"Yavaş"}.get(pname,pname)
+            if ptype is int: params[pname]=st.number_input(lbl,int(pmin),int(pmax),int(default),key=f"{prefix}_{pname}", label_visibility=vis)
+            else: params[pname]=st.number_input(lbl,float(pmin),float(pmax),float(default),step=0.01,key=f"{prefix}_{pname}", label_visibility=vis)
+            for ex_p in meta["params"][1:]: params[ex_p[0]] = ex_p[2]
+
+    condition=threshold=None
+    with c2 if not is_live else c2: condition=st.selectbox("Koşul",meta["conditions"],key=f"{prefix}_cond", label_visibility=vis)
+    with c3 if not is_live else c3:
+        is_numeric=condition in (">","<",">=","<=")
         if is_numeric:
-            threshold=st.number_input("Değer",-10000.0,10000.0,
-                                       30.0 if ind=="RSI" else 0.0,step=0.5,key=f"{prefix}_thr")
+            d_val = meta.get("def_thr", 0.0)
+            if ind == "Fiyat (Close)" and symbol:
+                q = fetch_quick_quote(symbol)
+                d_val = float(q["price"] or 0.0)
+                # Fiyata göre dinamik min/max
+                price_val = d_val
+                min_val = price_val * 0.5
+                max_val = price_val * 1.5
+            else:
+                min_val, max_val = -10000.0, 10000.0
+            threshold=st.number_input("Değer", min_val, max_val, d_val, step=0.5, key=f"{prefix}_thr_{ind}", label_visibility=vis)
         elif meta.get("cross_targets") and "Kesen" in condition:
-            tgt=st.selectbox("Hedef",meta["cross_targets"],key=f"{prefix}_tgt")
+            tgt=st.selectbox("Hedef",meta["cross_targets"],key=f"{prefix}_tgt", label_visibility=vis)
             threshold=float(tgt) if tgt.lstrip("-").replace(".","").isdigit() else 0.0
-        else:
-            st.write("")
     return ind,params,condition,threshold
 
 
 # ─────────────────────────────────────────────────────────────────────────────
 # DATABASE HELPERS  — period column is TEXT (after migration.sql)
 # ─────────────────────────────────────────────────────────────────────────────
-def _encode_params(ind,params,condition,threshold):
-    return json.dumps({"indicator":ind,"params":params,"condition":condition,"threshold":threshold})
+def _encode_params(ind,params,condition,threshold,ind2=None,params2=None,cond2=None,thr2=None):
+    return json.dumps({"indicator":ind,"params":params,"condition":condition,"threshold":threshold,
+                       "ind2":ind2,"params2":params2,"cond2":cond2,"thr2":thr2})
 
 def _decode_params(row):
     p=row.get("period","")
@@ -2116,7 +2186,8 @@ def _decode_params(row):
         print(f"[DEBUG] Invalid params JSON in row {row.get('indicator')}: {e}")
     return {"indicator":row.get("indicator","RSI"),
             "params":{"period":int(p) if str(p).isdigit() else 14},
-            "condition":row.get("condition","<"),"threshold":float(row.get("threshold",30))}
+            "condition":row.get("condition","<"),"threshold":float(row.get("threshold",30)),
+            "ind2":None,"params2":None,"cond2":None,"thr2":None}
 
 # ─────────────────────────────────────────────────────────────────────────────
 # PREFERENCES  — theme + watchlist persistent via Supabase users.preferences
@@ -2162,6 +2233,7 @@ def _prefs_load(user: dict) -> None:
         st.session_state[pb_key] = float(prefs.get("paper_balance", 100_000.0))
     if pp_key not in st.session_state:
         st.session_state[pp_key] = dict(prefs.get("paper_positions", {}))
+    st.session_state["currency"] = prefs.get("currency", "$")
 
 
 def _prefs_save(user: dict) -> None:
@@ -2174,18 +2246,15 @@ def _prefs_save(user: dict) -> None:
         "watchlist":       st.session_state.get(wl_key, ["BTC-USD"]),
         "paper_balance":   st.session_state.get(pb_key, 100_000.0),
         "paper_positions": st.session_state.get(pp_key, {}),
+        "currency":        st.session_state.get("currency", "$"),
     }
     
     # Try Supabase first
     if SUPABASE:
         try:
-            res = SUPABASE.table("users").upsert([{
-                "id": user["id"],
-                "email": user.get("email", ""),
-                "preferences": prefs
-            }]).execute()
+            SUPABASE.table("users").update({"preferences": prefs}).eq("id", user["id"]).execute()
         except Exception as e:
-            print(f"[WARN] Failed to upsert preferences to Supabase: {e}")
+            print(f"[WARN] Failed to update preferences: {e}")
     
     # Always save to session_state for demo mode persistence
     st.session_state[f"_prefs_{user['id']}"] = json.dumps(prefs)
@@ -2226,9 +2295,9 @@ def db_login(email, pwd):
             return False, "📧 E-posta doğrulanmamış.", {}
         return False, "E-posta veya şifre hatalı.", {}
 
-def db_save_strategy(uid,symbol,ind,params,condition,threshold):
+def db_save_strategy(uid,symbol,ind,params,condition,threshold,ind2=None,params2=None,cond2=None,thr2=None):
     # str() İPTAL EDİLDİ, JSONB doğrudan dict alıyor
-    encoded_dict = _encode_params(ind,params,condition,threshold)
+    encoded_dict = _encode_params(ind,params,condition,threshold,ind2,params2,cond2,thr2)
     row=dict(user_id=uid,symbol=symbol,indicator=ind,condition=condition,
              threshold=float(threshold) if threshold is not None else 0.0,
              period=encoded_dict,is_active=True)
@@ -2267,8 +2336,8 @@ def send_telegram_alert(symbol,signal,price,indicator,value,chat_id=""):
     token=os.getenv("TELEGRAM_BOT_TOKEN","")
     target=chat_id  # Fallback kaldırıldı — sadece kullanıcının kendi chat_id'si kullanılır
     if not token or not target: return
-    msg=(f"🚨 *HisseLab Sinyal*\n\n📌 `{display_sym(symbol)}`\n🔔 *{signal}*\n"
-         f"💰 `{price:.4f}`\n📊 {indicator}: `{value:.2f}`\n"
+    msg=(f"🚨 *Strateji Gerçekleşti*\n\n📌 `{display_sym(symbol)}`\n"
+         f"💰 Fiyat: `{price:.4f}`\n📊 {indicator}: `{value:.2f}`\n"
          f"🕐 `{datetime.now().strftime('%Y-%m-%d %H:%M:%S')}`")
     try: _req.post(f"https://api.telegram.org/bot{token}/sendMessage",
                    data={"chat_id":target,"text":msg,"parse_mode":"Markdown"},timeout=6)
@@ -2366,29 +2435,33 @@ def page_auth():
         t_li, t_re = st.tabs(["🔑 Giriş Yap", "✅ Kayıt Ol"])
 
         with t_li:
-            email = st.text_input("E-posta", key="li_e", placeholder="ornek@mail.com")
-            pwd   = st.text_input("Şifre",   key="li_p", type="password")
-            if st.button("Giriş Yap", key="btn_li", use_container_width=True):
-                if not email or not pwd:
-                    st.error("Tüm alanları doldurunuz.")
-                else:
-                    ok, err, user = db_login(email, pwd)
-                    if ok: st.session_state["user"] = user; st.rerun()
-                    else:  st.error(err)
+            with st.form("login_form"):
+                email = st.text_input("E-posta", key="li_e", placeholder="ornek@mail.com", autocomplete="username")
+                pwd   = st.text_input("Şifre",   key="li_p", type="password", autocomplete="current-password")
+                submitted = st.form_submit_button("Giriş Yap", use_container_width=True)
+                if submitted:
+                    if not email or not pwd:
+                        st.error("Tüm alanları doldurunuz.")
+                    else:
+                        ok, err, user = db_login(email, pwd)
+                        if ok: st.session_state["user"] = user; st.rerun()
+                        else:  st.error(err)
             if not SUPABASE:
                 st.info("🔔 Demo Mod aktif — Supabase bağlantısı yok.", icon="ℹ️")
 
         with t_re:
-            re  = st.text_input("E-posta",        key="re_e", placeholder="ornek@mail.com")
-            rp  = st.text_input("Şifre",          key="re_p",  type="password")
-            rp2 = st.text_input("Şifre (tekrar)", key="re_p2", type="password")
-            if st.button("Hesap Oluştur", key="btn_re", use_container_width=True):
-                if not re or not rp:  st.error("Tüm alanları doldurunuz.")
-                elif rp != rp2:       st.error("Şifreler eşleşmiyor.")
-                else:
-                    ok, err = db_register(re, rp)
-                    if ok: st.success("✅ Kayıt başarılı! Giriş yap sekmesinden devam et.")
-                    else:  st.error(err)
+            with st.form("register_form"):
+                re  = st.text_input("E-posta",        key="re_e", placeholder="ornek@mail.com", autocomplete="email")
+                rp  = st.text_input("Şifre",          key="re_p",  type="password", autocomplete="new-password")
+                rp2 = st.text_input("Şifre (tekrar)", key="re_p2", type="password", autocomplete="new-password")
+                submitted_reg = st.form_submit_button("Hesap Oluştur", use_container_width=True)
+                if submitted_reg:
+                    if not re or not rp:  st.error("Tüm alanları doldurunuz.")
+                    elif rp != rp2:       st.error("Şifreler eşleşmiyor.")
+                    else:
+                        ok, err = db_register(re, rp)
+                        if ok: st.success("✅ Kayıt başarılı! Giriş yap sekmesinden devam et.")
+                        else:  st.error(err)
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -2416,7 +2489,7 @@ def sidebar(user)->str:
         st.markdown('<p style="font-size:.56rem;letter-spacing:.14em;color:var(--muted);'
                     'text-transform:uppercase;padding-left:2px;margin-bottom:.2rem;">Menü</p>',
                     unsafe_allow_html=True)
-        page=st.radio("nav",["📊  Dashboard","🧪  Backtest","⚡  Canlı Sinyaller","🎨  Tema & Ayarlar"],
+        page=st.radio("nav",["📊  Anasayfa","🧪  Strateji Testi","⚡  Canlı Sinyaller","⚙️  Ayarlar"],
                       label_visibility="collapsed")
         st.markdown("---")
         st.markdown(
@@ -2441,6 +2514,7 @@ def sidebar(user)->str:
 # ─────────────────────────────────────────────────────────────────────────────
 def page_dashboard(user):
     sh("📊","Market Dashboard")
+    cur = st.session_state.get("currency", "$")
 
     # ── Two top-level tabs ─────────────────────────────────────────────────────
     tab_chart, tab_heat = st.tabs(["📈 Grafikler", "\U0001f5fa\ufe0f Isı Haritası"])
@@ -2498,28 +2572,15 @@ def page_dashboard(user):
                 pr=f"{q['price']:.4f}" if q["price"] else "—"
                 if q["change"] is not None:
                     sg="+" if q["change"]>=0 else ""; chg=f"{sg}{q['change']:.2f}%"
-                    chg_clr="var(--grn)" if q["change"]>=0 else "var(--red)"
-                else: chg="—"; chg_clr="var(--muted)"
+                    cls_chg="txt-pos" if q["change"]>=0 else "txt-neg"
+                else: chg="—"; cls_chg="txt-neu"
                 c_x,c_s,c_p,c_c=st.columns([0.5,4,2.5,2],gap="small")
                 with c_x:
                     if st.button("✖",key=f"rm_{idx}_{sym}",help=f"{display_sym(sym)} kaldır",type="tertiary"):
                         to_rm=wl.index(sym)
-                with c_s:
-                    st.markdown(
-                        f'<div class="tbl-row-cell"><span style="color:var(--acc);'
-                        f'font-family:\'Space Mono\',monospace;font-size:.78rem;'
-                        f'font-weight:600;">{display_sym(sym)}</span></div>',
-                        unsafe_allow_html=True)
-                with c_p:
-                    st.markdown(
-                        f'<div class="tbl-row-cell"><span style="font-family:\'Space Mono\','
-                        f'monospace;color:var(--txt);font-size:.78rem;">{pr}</span></div>',
-                        unsafe_allow_html=True)
-                with c_c:
-                    st.markdown(
-                        f'<div class="tbl-row-cell"><span style="font-family:\'Space Mono\','
-                        f'monospace;color:{chg_clr};font-size:.78rem;">{chg}</span></div>',
-                        unsafe_allow_html=True)
+                with c_s: st.markdown(f'<div class="tbl-row-cell"><span class="txt-sym">{display_sym(sym)}</span></div>', unsafe_allow_html=True)
+                with c_p: st.markdown(f'<div class="tbl-row-cell"><span class="txt-prc">{pr}</span></div>', unsafe_allow_html=True)
+                with c_c: st.markdown(f'<div class="tbl-row-cell"><span class="{cls_chg}">{chg}</span></div>', unsafe_allow_html=True)
 
             render_pagination(pg_wl, n_pg_wl, "pg_wl")
 
@@ -2606,26 +2667,13 @@ def page_dashboard(user):
                 if q.get("change") is not None:
                     sg = "+" if q["change"] >= 0 else ""
                     chg_str = f"{sg}{q['change']:.2f}%"
-                    chg_clr = "var(--grn)" if q["change"] >= 0 else "var(--red)"
+                    cls_chg = "txt-pos" if q["change"] >= 0 else "txt-neg"
                 else:
-                    chg_str = "—"; chg_clr = "var(--muted)"
+                    chg_str = "—"; cls_chg = "txt-neu"
                 r1, r2, r3 = st.columns([2, 1.5, 1.5])
-                with r1:
-                    st.markdown(
-                        f'<div class="tbl-row-cell"><span style="color:var(--acc);'
-                        f'font-family:\'Space Mono\',monospace;font-size:.78rem;'
-                        f'font-weight:600;">{display_sym(sym)}</span></div>',
-                        unsafe_allow_html=True)
-                with r2:
-                    st.markdown(
-                        f'<div class="tbl-row-cell"><span style="font-family:\'Space Mono\','
-                        f'monospace;color:var(--txt);font-size:.78rem;">{pr}</span></div>',
-                        unsafe_allow_html=True)
-                with r3:
-                    st.markdown(
-                        f'<div class="tbl-row-cell"><span style="font-family:\'Space Mono\','
-                        f'monospace;color:{chg_clr};font-size:.78rem;">{chg_str}</span></div>',
-                        unsafe_allow_html=True)
+                with r1: st.markdown(f'<div class="tbl-row-cell"><span class="txt-sym">{display_sym(sym)}</span></div>', unsafe_allow_html=True)
+                with r2: st.markdown(f'<div class="tbl-row-cell"><span class="txt-prc">{pr}</span></div>', unsafe_allow_html=True)
+                with r3: st.markdown(f'<div class="tbl-row-cell"><span class="{cls_chg}">{chg_str}</span></div>', unsafe_allow_html=True)
 
             # ── Sembol count BELOW rows, ABOVE pagination ─────────────────────────
             st.markdown(
@@ -2644,34 +2692,17 @@ def page_dashboard(user):
         bal = st.session_state.get(pb_key, 100_000.0)
         pos = st.session_state.get(pp_key, {})
 
-        bal_c, reset_c = st.columns([5, 1])
-        with bal_c:
-            st.markdown(
-                f'<div style="font-size:.8rem;color:var(--acc);font-family:\'Space Mono\','
-                f'monospace;margin-bottom:.4rem;">💵 Nakit: <b>${bal:,.2f}</b></div>',
-                unsafe_allow_html=True)
-        with reset_c:
-            if st.button("↺ Sıfırla", key="dash_paper_reset", help="Portföyü sıfırla"):
-                st.session_state[pb_key] = 100_000.0; st.session_state[pp_key] = {}
-                _prefs_save(user); st.rerun()
-
         # ── Hızlı alım formu ──────────────────────────────────────────────────────
         with st.expander("➕ Portföye Ekle", expanded=False):
             fa, fb, fc, fd = st.columns([3, 1.5, 1.5, 1])
             with fa:
                 all_syms_p = sorted(set(all_bist + all_crypto + STATIC_MARKETS.get("🇺🇸 S&P 500",[])))
-                add_sym_api = sym_selectbox("Sembol", all_syms_p, key="port_add_sym")
+                add_sym_api = sym_selectbox("Sembol", all_syms_p, key="port_add_sym", default="BTC-USD")
             with fb:
                 add_q = fetch_quick_quote(add_sym_api)
-                add_price = add_q["price"] or 0.0
-                st.markdown(
-                    f'<div style="padding:.35rem 0;font-size:.75rem;font-family:\'Space Mono\',monospace;">'
-                    f'<span style="color:var(--muted);font-size:.58rem;">Son Fiyat</span><br>'
-                    f'<span style="color:var(--acc);">${add_price:.4f}</span></div>',
-                    unsafe_allow_html=True)
+                add_price = st.number_input(f"Fiyat ({cur})", value=float(add_q["price"] or 0.0), format="%.4f", key=f"port_add_price_{add_sym_api}")
             with fc:
-                add_amount = st.number_input("Tutar ($)", min_value=10.0, max_value=float(bal) if bal > 10 else 10.0,
-                                             value=1000.0, step=100.0, key="port_add_amount")
+                add_amount = st.number_input(f"Tutar ({cur})", min_value=1.0, value=1000.0, step=100.0, key="port_add_amount")
             with fd:
                 st.markdown('<div style="height:1.6rem;"></div>', unsafe_allow_html=True)
                 if st.button("📥 Ekle", key="port_add_btn", use_container_width=True):
@@ -2679,7 +2710,7 @@ def page_dashboard(user):
                         msg = paper_buy(user, add_sym_api, add_price, add_amount)
                         st.success(msg); st.rerun()
                     else:
-                        st.error("Fiyat alınamadı.")
+                        st.error("Fiyat giriniz.")
 
         # ── Portföy tablosu ───────────────────────────────────────────────────────
         if not pos:
@@ -2689,7 +2720,7 @@ def page_dashboard(user):
         else:
             ph1,ph2,ph3,ph4,ph5,ph6,ph7 = st.columns([1.8,1.4,1.4,1.2,1.4,1.4,0.8])
             for col,lbl in zip([ph1,ph2,ph3,ph4,ph5,ph6],
-                               ["Sembol","Maliyet","Güncel","Adet","Toplam Değer","K/Z ($)"]):
+                               ["Sembol","Maliyet","Güncel","Adet",f"Toplam Değer",f"K/Z ({cur})"]):
                 col.markdown(
                     f'<span style="font-size:.58rem;color:var(--muted);font-family:\'Space Mono\','
                     f'monospace;text-transform:uppercase;">{lbl}</span>',
@@ -2706,16 +2737,16 @@ def page_dashboard(user):
                 cur_val = cur_p * qty
                 pnl_usd = cur_val - cost
                 pnl_pct = (cur_p - ep) / ep * 100 if ep > 0 else 0.0
-                clr = "var(--grn)" if pnl_usd >= 0 else "var(--red)"
+                cls_pnl = "txt-pos" if pnl_usd >= 0 else "txt-neg"
                 sgn = "+" if pnl_usd >= 0 else ""
 
                 c1,c2,c3,c4,c5,c6,c7 = st.columns([1.8,1.4,1.4,1.2,1.4,1.4,0.8])
-                c1.markdown(f"<div class='tbl-row-cell' style='color:var(--acc);font-family:\'Space Mono\',monospace;font-size:.75rem;'>{display_sym(sym)}</div>", unsafe_allow_html=True)
-                c2.markdown(f"<div class='tbl-row-cell' style='font-size:.75rem;'>${ep:.2f}</div>", unsafe_allow_html=True)
-                c3.markdown(f"<div class='tbl-row-cell' style='font-size:.75rem;'>${cur_p:.2f}</div>", unsafe_allow_html=True)
-                c4.markdown(f"<div class='tbl-row-cell' style='font-size:.75rem;color:var(--txt2);'>{qty:.4f}</div>", unsafe_allow_html=True)
-                c5.markdown(f"<div class='tbl-row-cell' style='font-size:.75rem;'>${cur_val:,.2f}</div>", unsafe_allow_html=True)
-                c6.markdown(f"<div class='tbl-row-cell' style='color:{clr};font-size:.75rem;'>{sgn}${pnl_usd:,.2f} ({sgn}{pnl_pct:.1f}%)</div>", unsafe_allow_html=True)
+                c1.markdown(f"<div class='tbl-row-cell txt-sym' style='font-size:.75rem;'>{display_sym(sym)}</div>", unsafe_allow_html=True)
+                c2.markdown(f"<div class='tbl-row-cell txt-prc' style='font-size:.75rem;'>{cur}{ep:.2f}</div>", unsafe_allow_html=True)
+                c3.markdown(f"<div class='tbl-row-cell txt-prc' style='font-size:.75rem;'>{cur}{cur_p:.2f}</div>", unsafe_allow_html=True)
+                c4.markdown(f"<div class='tbl-row-cell' style='font-size:.75rem;color:var(--txt2)!important;'>{qty:.4f}</div>", unsafe_allow_html=True)
+                c5.markdown(f"<div class='tbl-row-cell txt-prc' style='font-size:.75rem;'>{cur}{cur_val:,.2f}</div>", unsafe_allow_html=True)
+                c6.markdown(f"<div class='tbl-row-cell {cls_pnl}' style='font-size:.75rem;'>{sgn}{cur}{pnl_usd:,.2f} ({sgn}{pnl_pct:.1f}%)</div>", unsafe_allow_html=True)
                 with c7:
                     if st.button("Sat", key=f"dash_sell_{sym}", type="tertiary"):
                         to_sell = sym
@@ -2726,42 +2757,48 @@ def page_dashboard(user):
         # ── PRICE CHART — Lightweight Charts (BIST-safe, multi-indicator) ───────────
         sh("📈","Fiyat Grafiği")
 
-        # Row 1: Symbol | Timeframe | Refresh
-        sc, tf_c, bc = st.columns([3, 1.2, 0.8])
+        # Tek Satır Düzeni: Sembol | İndikatör | Zaman | Hacim | Yenile
+        sc, pop_c, tf_c, vol_c, bc = st.columns([1.3, 1.1, 0.8, 0.9, 0.8])
+
         with sc:
             all_syms = sorted(set(all_bist + all_crypto + STATIC_MARKETS.get("🇺🇸 S&P 500", [])))
             all_disp = [display_sym(s) for s in all_syms]
             try:    def_idx = all_disp.index("BTC")
             except: def_idx = 0
-            chosen_d = st.selectbox("", all_disp, index=def_idx, key="csym_sel",
-                                    label_visibility="collapsed")
+            if "csym_sel" not in st.session_state: st.session_state["csym_sel"] = all_disp[def_idx]
+            chosen_d = st.selectbox("Seç", all_disp, key="csym_sel", label_visibility="collapsed")
             try:    pos = all_disp.index(chosen_d); csym = all_syms[pos]
             except: csym = "BTC-USD"
-        with tf_c:
-            dash_interval, dash_period = tf_selectbox("dash_tf")
-        with bc:
-            if st.button("⟳ Yenile", key="cfetch"):
-                fetch_price_data.clear(); fetch_ticker_info.clear()
 
-        # Row 2: Indicator popover | Volume toggle
-        pop_c, vol_c = st.columns([3, 1])
         with pop_c:
             sel_inds = [ind for ind in OVERLAY_INDS if st.session_state.get(f"dash_chk_{ind}", False)]
             active_count = len(sel_inds)
-            pop_label = f"⚙️ İndikatörler{f'  ·  {active_count} aktif' if active_count else ''}"
-            with st.popover(pop_label, use_container_width=False):
+            pop_label = f"⚙️ İndikatörler{f' ({active_count})' if active_count else ''}"
+            with st.popover(pop_label, use_container_width=True):
                 st.markdown('<div style="font-size:.62rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;">Overlay İndikatörler</div>', unsafe_allow_html=True)
                 pc1, pc2 = st.columns(2)
-                for i, ind_name in enumerate(OVERLAY_INDS):
+                for i, ind_name in enumerate([x for x in OVERLAY_INDS if x != "Fiyat (Close)"]):
                     col = pc1 if i % 2 == 0 else pc2
-                    with col:
-                        st.checkbox(ind_name, key=f"dash_chk_{ind_name}")
-                if active_count and st.button("✕ Tümünü Kaldır", key="pop_clear_inds"):
-                    for ind_name in OVERLAY_INDS:
-                        st.session_state[f"dash_chk_{ind_name}"] = False
-                    st.rerun()
+                    with col: st.checkbox(ind_name, key=f"dash_chk_{ind_name}")
+                def clear_inds_cb():
+                    for ind_name in OVERLAY_INDS: st.session_state[f"dash_chk_{ind_name}"] = False
+                if active_count: st.button("✕ Kaldır", key="pop_clear_inds", on_click=clear_inds_cb, use_container_width=True)
+
+        with tf_c:
+            dash_interval, dash_period = tf_selectbox("dash_tf")
+
         with vol_c:
-            sep_vol = st.toggle("Hacmi Ayrı Panelde", value=st.session_state.get("dash_sep_vol", False), key="dash_sep_vol")
+            is_sep_vol = st.session_state.get("dash_sep_vol", False)
+            vol_label = "Hacimi\nBirleştir" if is_sep_vol else "Hacimi\nAyır"
+            vol_btn_style = "background:rgba(0,230,118,.1);border:2px solid var(--grn);" if is_sep_vol else "background:transparent;border:2px solid rgba(255,255,255,.2);"
+            if st.button(vol_label, key="dash_vol_card", use_container_width=True,
+                        help="Hacim grafiğini ayır/birleştir"):
+                st.session_state["dash_sep_vol"] = not is_sep_vol
+                st.rerun()
+
+        with bc:
+            if st.button("⟳ Yenile", key="cfetch", use_container_width=True):
+                fetch_price_data.clear(); fetch_ticker_info.clear()
 
         df = fetch_price_data(csym, period=dash_period, interval=dash_interval)
         if df is not None and not df.empty and len(df) >= 2:
@@ -2799,7 +2836,6 @@ def paper_buy(user: dict, symbol: str, price: float, amount: float = 1000.0) -> 
     pb = f"paper_balance_{user['id']}"; pp = f"paper_positions_{user['id']}"
     bal = st.session_state.get(pb, 100_000.0)
     pos = st.session_state.get(pp, {})
-    if bal < amount: return f"⚠ Bakiye yetersiz (${bal:,.0f} < ${amount:,.0f})"
     qty = amount / price
     if symbol in pos:
         old_qty = pos[symbol]["qty"]
@@ -2809,10 +2845,10 @@ def paper_buy(user: dict, symbol: str, price: float, amount: float = 1000.0) -> 
         pos[symbol] = {"qty": new_qty, "entry": new_entry}
     else:
         pos[symbol] = {"qty": qty, "entry": price}
-    st.session_state[pb] = bal - amount
     st.session_state[pp] = pos
     _prefs_save(user)
-    return f"✅ AL: {display_sym(symbol)} | ${amount:,.0f} | Ort: ${pos[symbol]['entry']:.2f}"
+    cur = st.session_state.get("currency", "$")
+    return f"✅ AL: {display_sym(symbol)} | {cur}{amount:,.0f} | Ort: {cur}{pos[symbol]['entry']:.2f}"
 
 
 def paper_sell(user: dict, symbol: str, price: float) -> str:
@@ -2874,6 +2910,7 @@ def render_heatmap(syms: list) -> None:
 # ─────────────────────────────────────────────────────────────────────────────
 def page_backtest():
     sh("🧪","Analiz Laboratuvarı")
+    cur = st.session_state.get("currency", "$")
     markets=get_markets()
     all_bist=markets.get("🏦 BIST Tüm Hisseler",_BIST_FALLBACK)
     pool=sorted(set(all_bist+STATIC_MARKETS.get("🇺🇸 S&P 500",[])+STATIC_MARKETS.get("🪙 Kripto (USD)",[])))
@@ -2887,52 +2924,128 @@ def page_backtest():
                     'monospace;text-transform:uppercase;letter-spacing:.12em;'
                     'margin-bottom:.5rem;">⚙️ Strateji Parametreleri</div>',unsafe_allow_html=True)
 
-        try: def_i=disp.index("ASELS")
-        except: def_i=0
-        ch=st.selectbox("Sembol",disp,index=def_i,key="bsym_sel",label_visibility="visible")
+        try: def_idx = disp.index("BTC")
+        except: def_idx = 0
+        ch = st.selectbox("Sembol", disp, index=def_idx, key="bsym_sel_bt", label_visibility="collapsed")
         try: pos=disp.index(ch); bsym=pool[pos]
-        except: bsym="ASELS.IS"
+        except: bsym="BTC-USD"
 
-        st.markdown('<span style="font-size:.65rem;color:var(--muted);font-family:\'Space Mono\','
-                    'monospace;text-transform:uppercase;">Zaman Dilimi</span>',unsafe_allow_html=True)
-        bt_interval, bt_period = tf_selectbox("bt_tf")
-
-        # ── Tarih Aralığı Seçimi ──────────────────────────────────────────────
         from datetime import datetime, timedelta
         today = datetime.now().date()
         two_years_ago = today - timedelta(days=730)
         
-        d1, d2 = st.columns(2)
-        with d1:
-            # Başlangıç tarihi bugünden ileri olamaz
-            bt_start = st.date_input("Başlangıç", value=two_years_ago, max_value=today, key="bt_start")
-        with d2:
-            # Bitiş tarihi, başlangıç tarihinden eski olamaz ve bugünden ileri olamaz
-            bt_end = st.date_input("Bitiş", value=today, min_value=bt_start, max_value=today, key="bt_end")
+        st.markdown('<style>.bt-lbl{margin-bottom:.08rem;}.stNumberInput{margin-top:-0.4rem;}.stSelectbox{margin-top:-0.4rem;}.stDateInput{margin-top:-0.4rem;}</style>', unsafe_allow_html=True)
+        
+        # ── Satır 1: Zaman Dilimi | Sermaye (Yarı Yarıya) ───────────────────────
+        r1_tf, r1_cap = st.columns([1, 1])
+        with r1_tf:
+            st.markdown('<span class="bt-lbl" style="font-size:.65rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;display:block;">Zaman Dilimi</span>',unsafe_allow_html=True)
+            bt_interval, bt_period = tf_selectbox("bt_tf")
+        with r1_cap:
+            st.markdown(f'<span class="bt-lbl" style="font-size:.65rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;display:block;">Sermaye ({cur})</span>',unsafe_allow_html=True)
+            cap = st.number_input("", 100.0, value=10_000.0, step=500.0, key="bt_cap", label_visibility="collapsed")
 
-        st.markdown('<div style="font-size:.62rem;color:var(--muted);font-family:\'Space Mono\','
-                    'monospace;text-transform:uppercase;letter-spacing:.1em;margin-bottom:.2rem;margin-top:.5rem;">'
-                    '1. Şart</div>',unsafe_allow_html=True)
-        bind,bparams,bcond,bthr=indicator_form("bt")
+        # ── Satır 2: Başlangıç | Bitiş Tarihleri ────────────────────────────────
+        st.markdown("<div style='margin-top:.12rem;'></div>", unsafe_allow_html=True)
+        r2_st, r2_en = st.columns([1, 1])
+        with r2_st:
+            st.markdown('<span class="bt-lbl" style="font-size:.65rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;display:block;">Başlangıç</span>',unsafe_allow_html=True)
+            bt_start = st.date_input("", value=two_years_ago, max_value=today, key="bt_start", label_visibility="collapsed")
+        with r2_en:
+            st.markdown('<span class="bt-lbl" style="font-size:.65rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;display:block;">Bitiş</span>',unsafe_allow_html=True)
+            bt_end = st.date_input("", value=today, min_value=bt_start, max_value=today, key="bt_end", label_visibility="collapsed")
 
-        # ── Ek Şart (AND logic) ──────────────────────────────────────────────
+        # ── Satır 3: 1. Şart (İndikatör Seçimi) ─────────────────────────────────
+        st.markdown('<div style="font-size:.62rem;color:var(--gld);font-family:\'Space Mono\',monospace;text-transform:uppercase;letter-spacing:.1em;margin:.6rem 0 .4rem;">1. Şart</div>', unsafe_allow_html=True)
+        ind_display_options = [f"{k} — {v['label'].split('—')[-1].strip() if '—' in v['label'] else v['label']}" for k,v in IND_META.items() if k != "Fiyat (Close)"]
+        chosen = st.selectbox("İndikatör", ind_display_options, key="bt_ind", label_visibility="collapsed")
+        bind = chosen.split(" — ")[0].strip()
+        meta = IND_META[bind]
+
+        # ── Satır 4: Periyot Parametresi ────────────────────────────────────────
+        bparams = {}
+        if meta["params"]:
+            st.markdown('<span class="bt-lbl" style="font-size:.65rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;display:block;">Periyot</span>',unsafe_allow_html=True)
+            pname, ptype, default, pmin, pmax = meta["params"][0]
+            r_per, _ = st.columns([1, 1.5])
+            with r_per:
+                if ptype is int: bparams[pname] = st.number_input("", int(pmin), int(pmax), int(default), key=f"bt_per_{bind}", label_visibility="collapsed")
+                else: bparams[pname] = st.number_input("", float(pmin), float(pmax), float(default), step=0.01, key=f"bt_per_{bind}", label_visibility="collapsed")
+            for ex_p in meta["params"][1:]: bparams[ex_p[0]] = ex_p[2]
+
+        # ── Satır 5: Koşul | Değer ──────────────────────────────────────────────
+        r_c, r_t = st.columns([1.7, 1])
+        with r_c:
+            st.markdown('<span class="bt-lbl" style="font-size:.65rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;display:block;">Koşul</span>',unsafe_allow_html=True)
+            bcond = st.selectbox("", meta["conditions"], key=f"bt_cond_{bind}", label_visibility="collapsed")
+        
+        with r_t:
+            is_numeric = bcond in (">", "<", ">=", "<=")
+            is_cross = meta.get("cross_targets") and "Kesen" in bcond
+            
+            if is_numeric or is_cross:
+                st.markdown('<span class="bt-lbl" style="font-size:.65rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;display:block;">Hedef Değer</span>',unsafe_allow_html=True)
+                if is_numeric:
+                    bthr = st.number_input("", -10000.0, 10000.0, meta.get("def_thr", 0.0), step=0.5, key=f"bt_thr_{bind}_{bcond}", label_visibility="collapsed")
+                else:
+                    tgt = st.selectbox("", meta["cross_targets"], key=f"bt_tgt_{bind}_{bcond}", label_visibility="collapsed")
+                    bthr = float(tgt) if tgt.lstrip("-").replace(".","").isdigit() else 0.0
+            else:
+                bthr = 0.0
+
+        # ── Ek Şart (AND) ───────────────────────────────────────────────────────
+        st.markdown("<div style='margin-top:.5rem;'></div>", unsafe_allow_html=True)
         use_cond2 = st.toggle("➕ Ek Şart Ekle (AND)", value=False, key="bt_use_cond2")
         bind2=bparams2=bcond2=bthr2=None
         if use_cond2:
-            st.markdown('<div style="font-size:.62rem;color:var(--gld);font-family:\'Space Mono\','
-                        'monospace;text-transform:uppercase;letter-spacing:.1em;margin:.3rem 0 .2rem;">'
-                        '2. Şart (AND)</div>',unsafe_allow_html=True)
-            bind2,bparams2,bcond2,bthr2=indicator_form("bt2")
+            st.markdown('<div style="font-size:.62rem;color:var(--gld);font-family:\'Space Mono\',monospace;text-transform:uppercase;letter-spacing:.1em;margin:.2rem 0 .3rem;">2. Şart (AND)</div>', unsafe_allow_html=True)
+            ind_display_options2 = [f"{k} — {v['label'].split('—')[-1].strip() if '—' in v['label'] else v['label']}" for k,v in IND_META.items() if k != "Fiyat (Close)"]
+            chosen2 = st.selectbox("İndikatör", ind_display_options2, key="bt2_ind", label_visibility="collapsed")
+            bind2 = chosen2.split(" — ")[0].strip()
+            meta2 = IND_META[bind2]
+            
+            bparams2 = {}
+            if meta2["params"]:
+                st.markdown('<span class="bt-lbl" style="font-size:.65rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;display:block;">Periyot</span>',unsafe_allow_html=True)
+                pname2, ptype2, default2, pmin2, pmax2 = meta2["params"][0]
+                r_per2, _ = st.columns([1, 1.5])
+                with r_per2:
+                    if ptype2 is int: bparams2[pname2] = st.number_input("", int(pmin2), int(pmax2), int(default2), key=f"bt2_per_{bind2}", label_visibility="collapsed")
+                    else: bparams2[pname2] = st.number_input("", float(pmin2), float(pmax2), float(default2), step=0.01, key=f"bt2_per_{bind2}", label_visibility="collapsed")
+                for ex_p2 in meta2["params"][1:]: bparams2[ex_p2[0]] = ex_p2[2]
+            
+            r_c2, r_t2 = st.columns([1.7, 1])
+            with r_c2:
+                st.markdown('<span class="bt-lbl" style="font-size:.65rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;display:block;">Koşul</span>',unsafe_allow_html=True)
+                bcond2 = st.selectbox("", meta2["conditions"], key=f"bt2_cond_{bind2}", label_visibility="collapsed")
+            
+            with r_t2:
+                is_numeric2 = bcond2 in (">", "<", ">=", "<=")
+                is_cross2 = meta2.get("cross_targets") and "Kesen" in bcond2
+                
+                if is_numeric2 or is_cross2:
+                    st.markdown('<span class="bt-lbl" style="font-size:.65rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;display:block;">Hedef Değer</span>',unsafe_allow_html=True)
+                    if is_numeric2:
+                        bthr2 = st.number_input("", -10000.0, 10000.0, meta2.get("def_thr", 0.0), step=0.5, key=f"bt2_thr_{bind2}_{bcond2}", label_visibility="collapsed")
+                    else:
+                        tgt2 = st.selectbox("", meta2["cross_targets"], key=f"bt2_tgt_{bind2}_{bcond2}", label_visibility="collapsed")
+                        bthr2 = float(tgt2) if tgt2.lstrip("-").replace(".","").isdigit() else 0.0
+                else:
+                    bthr2 = 0.0
 
-        c1, c2, c3 = st.columns(3)
-        with c1:
-            cap=st.number_input("Sermaye ($)",100.0,value=10_000.0,step=500.0,key="bt_cap")
-        with c2:
-            tp=st.number_input("Kâr Al (%) (0=İptal)",0.0,100.0,0.0,step=0.5,key="bt_tp")
-        with c3:
-            sl=st.number_input("Zarar Durdur (%) (0=İptal)",0.0,100.0,0.0,step=0.5,key="bt_sl")
-        
-        run=st.button("▶ TESTİ ÇALIŞTIR",key="run_bt",use_container_width=True)
+        # ── Satır 6: Kar Al | Zarar Durdur ──────────────────────────────────────
+        st.markdown("<div style='margin-top:.5rem;'></div>", unsafe_allow_html=True)
+        r_tp, r_sl = st.columns([1, 1])
+        with r_tp:
+            st.markdown('<span class="bt-lbl" style="font-size:.65rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;display:block;">Kâr Al (%)</span>',unsafe_allow_html=True)
+            tp = st.number_input("", 0.0, 100.0, 0.0, step=0.5, key="bt_tp", label_visibility="collapsed")
+        with r_sl:
+            st.markdown('<span class="bt-lbl" style="font-size:.65rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;display:block;">Zarar Durdur (%)</span>',unsafe_allow_html=True)
+            sl = st.number_input("", 0.0, 100.0, 0.0, step=0.5, key="bt_sl", label_visibility="collapsed")
+
+        # ── Buton ───────────────────────────────────────────────────────────────
+        st.markdown("<div style='margin-top:.8rem;'></div>", unsafe_allow_html=True)
+        run = st.button("▶ TESTİ ÇALIŞTIR", key="run_bt", use_container_width=True)
 
     # ── RIGHT: Results ────────────────────────────────────────────────────────
     with col_results:
@@ -2970,7 +3083,7 @@ def page_backtest():
         with m1: mc("Toplam K/Z",f"{sign}{res['total_return']:.2f}%","",
                     "mc-green" if res["total_return"]>=0 else "mc-red")
         with m2: mc("Başlangıç / Bitiş",
-                    f"${res['initial_capital']:,.0f} → ${res['final_capital']:,.0f}","","mc-blue")
+                    f"{cur}{res['initial_capital']:,.0f} → {cur}{res['final_capital']:,.0f}","","mc-blue")
         with m3: mc("Max Drawdown",f"{res['max_drawdown']:.2f}%","","mc-red")
 
         m4,m5 = st.columns(2)
@@ -2996,9 +3109,9 @@ def page_backtest():
         in_trade=False; entry_date=None; entry_price=0.0
         for date,row in df_j.iterrows():
             p=float(row["Close"])
-            if not in_trade and bool(row.get("entry",False)):
+            if not in_trade and bool(row.get("trade_entry",False)):
                 in_trade=True; entry_date=date; entry_price=p
-            elif in_trade and bool(row.get("exit",False)):
+            elif in_trade and bool(row.get("trade_exit",False)):
                 pnl=(p-entry_price)/entry_price*100
                 trades_rows.append({
                     "entry_date": entry_date.strftime("%Y-%m-%d") if hasattr(entry_date,"strftime") else str(entry_date),
@@ -3014,9 +3127,9 @@ def page_backtest():
                 sign2="+" if t["pnl"]>=0 else ""
                 rows_html+=(f"<tr>"
                     f"<td class='tj-buy'>{t['entry_date']}</td>"
-                    f"<td class='tj-buy'>${t['entry_price']:.4f}</td>"
+                    f"<td class='tj-buy'>{cur}{t['entry_price']:.4f}</td>"
                     f"<td class='tj-sell'>{t['exit_date']}</td>"
-                    f"<td class='tj-sell'>${t['exit_price']:.4f}</td>"
+                    f"<td class='tj-sell'>{cur}{t['exit_price']:.4f}</td>"
                     f"<td class='{pnl_cls}'>{sign2}{t['pnl']:.2f}%</td>"
                     f"</tr>")
             st.markdown(
@@ -3036,42 +3149,66 @@ def page_backtest():
 # ─────────────────────────────────────────────────────────────────────────────
 def page_live(user):
     sh("⚡","Komuta Merkezi")
+    cur = st.session_state.get("currency", "$")
 
     markets=get_markets()
     all_bist=markets.get("🏦 BIST Tüm Hisseler",_BIST_FALLBACK)
     pool=sorted(set(all_bist+STATIC_MARKETS.get("🪙 Kripto (USD)",[])+STATIC_MARKETS.get("🇺🇸 S&P 500",[])))
 
     # ── YENİ STRATEJİ FORMU ────────────────────────────────────────────────────
-    st.markdown(
-        '<div style="background:linear-gradient(135deg,rgba(var(--acc-rgb),.07),rgba(var(--acc-rgb),.02));'
-        'border:1px solid rgba(var(--acc-rgb),.2);border-radius:12px;padding:.85rem 1.1rem;margin-bottom:.6rem;">'
-        '<div style="font-size:.6rem;color:var(--acc);font-family:\'Space Mono\',monospace;'
-        'text-transform:uppercase;letter-spacing:.14em;margin-bottom:.55rem;">➕ Yeni Strateji Kur</div>',
-        unsafe_allow_html=True)
 
     sym_c, tf_c = st.columns([2, 1])
     with sym_c:
-        st.markdown('<span style="font-size:.6rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;">Sembol</span>', unsafe_allow_html=True)
-        lsym = sym_selectbox("", pool, key="lsym_sel_v2")
+        d_opts = [display_sym(x) for x in pool]
+        d_idx = d_opts.index("BTC-USD") if "BTC-USD" in d_opts else 0
+        lsym_disp = st.selectbox("Sembol", d_opts, index=d_idx, key="lsym_sel_v2")
+        lsym = pool[d_opts.index(lsym_disp)]
     with tf_c:
-        st.markdown('<span style="font-size:.6rem;color:var(--muted);font-family:\'Space Mono\',monospace;text-transform:uppercase;">Zaman Dilimi</span>', unsafe_allow_html=True)
-        lv_interval, lv_period = tf_selectbox("lv_tf")
+        tf_idx = TF_LABELS.index("1 Gün")
+        chosen_tf = st.selectbox("Zaman Dilimi", TF_LABELS, index=tf_idx, key="lv_tf")
+        lv_interval, lv_period = TF_INTERVAL[chosen_tf], TF_PERIOD[chosen_tf]
 
     st.markdown('<div style="font-size:.58rem;color:var(--gld);font-family:\'Space Mono\',monospace;text-transform:uppercase;letter-spacing:.1em;margin:.5rem 0 .25rem;">1. Şart</div>', unsafe_allow_html=True)
-    lind,lparams,lcond,lthr=indicator_form("lv")
+    lind,lparams,lcond,lthr=indicator_form("lv", symbol=lsym, is_live=True)
 
-    use_lv_cond2 = st.toggle("➕ Ek Şart Ekle (AND)", value=False, key="lv_use_cond2")
+    use_lv_cond2 = st.toggle("➕ Ek Şart Ekle (OR)", value=False, key="lv_use_cond2")
     lind2=lparams2=lcond2=lthr2=None
     if use_lv_cond2:
-        st.markdown('<div style="font-size:.58rem;color:var(--gld);font-family:\'Space Mono\',monospace;text-transform:uppercase;letter-spacing:.1em;margin:.4rem 0 .2rem;">2. Şart (AND)</div>', unsafe_allow_html=True)
-        lind2,lparams2,lcond2,lthr2=indicator_form("lv2")
+        st.markdown('<div style="font-size:.58rem;color:var(--gld);font-family:\'Space Mono\',monospace;text-transform:uppercase;letter-spacing:.1em;margin:.4rem 0 .2rem;">2. Şart (OR)</div>', unsafe_allow_html=True)
+        lind2,lparams2,lcond2,lthr2=indicator_form("lv2", symbol=lsym, is_live=True)
 
     if st.button("💾 STRATEJİYİ KAYDET", key="save_s", use_container_width=True):
-        ok=db_save_strategy(user["id"],lsym,lind,lparams,lcond,lthr)
-        if ok: st.success(f"✅ Kaydedildi: **{display_sym(lsym)}** — {lind} {lcond}"); st.rerun()
-        else:  st.error("Kayıt başarısız.")
-
-    st.markdown('</div>', unsafe_allow_html=True)
+        with st.spinner("Strateji koşulları anlık verilerle test ediliyor..."):
+            df = fetch_price_data(lsym, period=lv_period, interval=lv_interval)
+            is_already_triggered = False
+            val_str = ""
+            
+            if df is not None and not df.empty:
+                sig1 = build_entry_signal(df, lind, lparams, lcond, lthr).fillna(False)
+                s_ser = compute_ind_series(df, lind, lparams).dropna()
+                val1 = float(s_ser.iloc[-1]) if not s_ser.empty else 0.0
+                val_str = f"{lind}={val1:.2f}"
+                
+                if use_lv_cond2 and lind2 and lcond2 is not None:
+                    sig2 = build_entry_signal(df, lind2, lparams2 or {}, lcond2, lthr2).fillna(False)
+                    s_ser2 = compute_ind_series(df, lind2, lparams2 or {}).dropna()
+                    val2 = float(s_ser2.iloc[-1]) if not s_ser2.empty else 0.0
+                    is_already_triggered = bool((sig1 | sig2).iloc[-1])
+                    val_str += f" | {lind2}={val2:.2f}"
+                else:
+                    is_already_triggered = bool(sig1.iloc[-1])
+            
+            if is_already_triggered:
+                st.warning(f"⚠️ Bu strateji anlık piyasa verilerinde zaten gerçekleşmiş (True) durumda olduğu için kaydedilemez! "
+                           f"Botun arka planda çalışabilmesi için henüz tetiklenmemiş ileriye dönük bir alarm kurmalısınız. "
+                           f"(Anlık Değerler: {val_str})")
+            else:
+                ok = db_save_strategy(user["id"], lsym, lind, lparams, lcond, lthr, lind2, lparams2, lcond2, lthr2)
+                if ok: 
+                    st.success(f"✅ Strateji Başarıyla Aktif Edildi: **{display_sym(lsym)}**")
+                    st.rerun()
+                else:  
+                    st.error("Kayıt başarısız.")
 
     # ── Bot Status Cards ────────────────────────────────────────────────────────
     sh("🤖","Bot Durum Kartları")
@@ -3088,70 +3225,104 @@ def page_live(user):
                      'margin-right:5px;"></span>AKTİF'
                      if act else '● DURDU')
                 dot_clr='var(--grn)' if act else 'var(--muted)'
+                def _fmt(i, c, t):
+                    if str(t) in ("None", ""): return f"<b>{i}</b> {c}"
+                    try:
+                        if float(t) == 0.0 and c not in (">", "<", ">=", "<="): return f"<b>{i}</b> {c}"
+                    except: pass
+                    return f"<b>{i}</b> {c} <b>{t}</b>"
+                ind_text = _fmt(dec.get('indicator'), dec.get('condition'), dec.get('threshold'))
+                if dec.get("ind2"):
+                    ind_text += f"<br><span style='color:var(--gld);font-size:.65rem;'>OR</span> " + _fmt(dec.get('ind2'), dec.get('cond2'), dec.get('thr2'))
                 st.markdown(
                     f'<div class="bot-card">'
                     f'<div class="bot-card-sym">{display_sym(s["symbol"])}</div>'
-                    f'<div class="bot-card-ind">{dec["indicator"]} — {dec["condition"]}</div>'
-                    f'<div class="bot-card-cond">'
-                    f'{", ".join(f"{k}={v}" for k,v in dec["params"].items())}</div>'
+                    f'<div class="bot-card-ind" style="font-size:.8rem;">{ind_text}</div>'
                     f'<div style="font-size:.65rem;color:{dot_clr};margin-top:.4rem;'
                     f'font-family:\'Space Mono\',monospace;">{dot}</div></div>',
                     unsafe_allow_html=True)
-                btn_col1, btn_col2 = st.columns(2)
+                btn_col1, btn_col2, btn_col3 = st.columns([1, 1, 1])
                 with btn_col1:
                     if act:
-                        if st.button("⏹ Durdur",key=f"stp_{s['id']}",use_container_width=True):
-                            db_toggle(s["id"],False); st.rerun()
+                        if st.button("⏹ Dur", key=f"stp_{s['id']}", type="tertiary"):
+                            db_toggle(s["id"], False); st.rerun()
                     else:
-                        if st.button("▶ Başlat",key=f"str_{s['id']}",use_container_width=True):
-                            db_toggle(s["id"],True); st.rerun()
+                        if st.button("▶ Başla", key=f"str_{s['id']}", type="tertiary"):
+                            db_toggle(s["id"], True); st.rerun()
+                with btn_col3:
+                    if st.button("🗑️ Sil", key=f"del_{s['id']}", type="tertiary"):
+                        if SUPABASE: SUPABASE.table("strategies").delete().eq("id", s["id"]).execute()
+                        else: st.session_state["_strats"] = [x for x in st.session_state.get("_strats", []) if x["id"] != s["id"]]
+                        st.rerun()
 
     # ── Manual Check + Terminal ─────────────────────────────────────────────────
     sh("🔬","Anlık Manuel Kontrol")
     if "signal_log" not in st.session_state: st.session_state["signal_log"]=[]
     if st.button("🔄 Şimdi Kontrol Et",key="manual_chk"):
-        with st.spinner("Kontrol ediliyor…"):
-            df=fetch_price_data(lsym, period=lv_period, interval=lv_interval)
-        if df is not None and not df.empty:
-            s=compute_ind_series(df,lind,lparams).dropna()
-            val=float(s.iloc[-1]) if not s.empty else 0.0
-            price=float(df["Close"].iloc[-1])
-            sig1=build_entry_signal(df,lind,lparams,lcond,lthr).fillna(False)
-            if lind2 and lcond2 is not None:
-                sig2=build_entry_signal(df,lind2,lparams2 or {},lcond2,lthr2).fillna(False)
-                trig=bool((sig1&sig2).iloc[-1])
-            else:
-                trig=bool(sig1.iloc[-1])
-            ts=datetime.now().strftime("%H:%M:%S")
-            buy_date=datetime.now().strftime("%d.%m.%Y %H:%M")
-            if trig:
-                AUTO_AMOUNT=1000.0
-                paper_msg=paper_buy(user,lsym,price,AUTO_AMOUNT)
-                qty=AUTO_AMOUNT/price if price>0 else 0.0
-                cur_q=fetch_quick_quote(lsym)
-                cur_price=cur_q["price"] if cur_q.get("price") else price
-                cur_val=qty*cur_price
-                send_telegram_alert(lsym,"BUY",price,lind,val,user.get("telegram_chat_id",""))
-                st.toast(f"🚨 {lind}={val:.2f} → Otomatik AL",icon="🔔")
-                st.session_state["signal_log"].append(
-                    f'<span class="t-ts">[{ts}]</span> '
-                    f'<span class="t-trig">🚨 SİNYAL {display_sym(lsym)} | {lind}={val:.2f} | '
-                    f'Fiyat:{price:.4f} | Alım:{buy_date} | Güncel:${cur_val:,.2f}</span> | {paper_msg}')
-            else:
-                st.session_state["signal_log"].append(
-                    f'<span class="t-ts">[{ts}]</span> '
-                    f'<span class="t-none">— {display_sym(lsym)} | {lind}={val:.2f} | şart gerçekleşmedi</span>')
+        active_strats = [bot_row for bot_row in strats if bot_row.get("is_active", True)]
+        if not active_strats:
+            st.warning("Aktif strateji bulunamadı.")
         else:
-            st.session_state["signal_log"].append(
-                f'<span class="t-ts">[{datetime.now().strftime("%H:%M:%S")}]</span> '
-                f'<span class="t-none">⚠ Veri alınamadı: {display_sym(lsym)}</span>')
+            needs_rerun = False
+            with st.spinner(f"{len(active_strats)} aktif bot kontrol ediliyor…"):
+                for s_row in active_strats:
+                    dec = _decode_params(s_row)
+                    c_sym = s_row["symbol"]
+                    c_ind = dec.get("indicator")
+                    c_prm = dec.get("params", {})
+                    c_cnd = dec.get("condition")
+                    c_thr = dec.get("threshold")
+                    c_ind2 = dec.get("ind2")
+                    c_prm2 = dec.get("params2", {})
+                    c_cnd2 = dec.get("cond2")
+                    c_thr2 = dec.get("thr2")
+
+                    df=fetch_price_data(c_sym, period=lv_period, interval=lv_interval)
+                    ts=datetime.now().strftime("%H:%M:%S")
+                    if df is not None and not df.empty:
+                        s_ser=compute_ind_series(df,c_ind,c_prm).dropna()
+                        val=float(s_ser.iloc[-1]) if not s_ser.empty else 0.0
+                        price=float(df["Close"].iloc[-1])
+                        sig1=build_entry_signal(df,c_ind,c_prm,c_cnd,c_thr).fillna(False)
+                        
+                        if c_ind2 and c_cnd2 is not None:
+                            sig2=build_entry_signal(df,c_ind2,c_prm2,c_cnd2,c_thr2).fillna(False)
+                            trig=bool((sig1|sig2).iloc[-1])
+                        else:
+                            trig=bool(sig1.iloc[-1])
+                        
+                        if trig:
+                            send_telegram_alert(c_sym,"SIGNAL",price,c_ind,val,user.get("telegram_chat_id",""))
+                            st.toast(f"🚨 SİNYAL: {display_sym(c_sym)} ({c_ind}={val:.2f})", icon="🔔")
+                            st.session_state["signal_log"].append(
+                                f'<span class="t-ts">[{ts}]</span> '
+                                f'<span class="t-trig">🚨 STRATEJİ GERÇEKLEŞTİ | {display_sym(c_sym)} | Fiyat: {price:.4f} | {c_ind}={val:.2f}</span>')
+                            
+                            # Otomatik Silme (İmha) İşlemi
+                            if SUPABASE:
+                                try: SUPABASE.table("strategies").delete().eq("id", s_row["id"]).execute()
+                                except: pass
+                            else:
+                                st.session_state["_strats"] = [x for x in st.session_state.get("_strats", []) if x.get("id") != s_row.get("id")]
+                            needs_rerun = True
+                        else:
+                            st.session_state["signal_log"].append(
+                                f'<span class="t-ts">[{ts}]</span> '
+                                f'<span class="t-none">— {display_sym(c_sym)} | Fiyat: {price:.4f} | {c_ind}={val:.2f} | Şart sağlanmadı</span>')
+                    else:
+                        st.session_state["signal_log"].append(
+                            f'<span class="t-ts">[{ts}]</span> '
+                            f'<span class="t-none">⚠ Veri alınamadı: {display_sym(c_sym)}</span>')
+            
+            if needs_rerun:
+                st.rerun()
 
     # Terminal output
     if st.session_state["signal_log"]:
         lines="<br>".join(st.session_state["signal_log"][::-1][:30])
         st.markdown(f'<div class="terminal">{lines}</div>',unsafe_allow_html=True)
     else:
-        st.markdown('<div class="terminal"><span style="color:#1d5c3a;">— Terminal boş. '
+        st.markdown('<div class="terminal"><span style="color:var(--muted);">— Terminal boş. '
                     'Kontrol et butonuna bas.</span></div>',unsafe_allow_html=True)
 
 
@@ -3173,12 +3344,20 @@ def page_settings(user):
                 st.session_state["theme"]["accent"]=h; st.session_state["theme"]["accent_rgb"]=r
                 _prefs_save(user); st.rerun()
     st.markdown("##### 🌑 Arka Plan")
-    bg_opts={"Koyu Siyah":("#080c14","#111827","#1e2d45"),"Lacivert":("#060d1a","#0d1728","#192640"),
-             "Antrasit":("#0f0f0f","#1a1a1a","#2a2a2a"),"Koyu Gri":("#111218","#1c1c26","#282840")}
+    bg_opts = {
+        "Koyu Siyah": ("#080c14", "#111827", "#1e2d45", "#e8f0fe", "#8ba3c9", "#4a6080", False),
+        "Lacivert": ("#060d1a", "#0d1728", "#192640", "#e8f0fe", "#8ba3c9", "#4a6080", False),
+        "Ferah Beyaz": ("#f8f9fa", "#ffffff", "#dee2e6", "#111827", "#495057", "#6c757d", True),
+        "Açık Gri": ("#e9ecef", "#f8f9fa", "#ced4da", "#111827", "#495057", "#6c757d", True)
+    }
     bg_ch=st.radio("Gizli",list(bg_opts.keys()),horizontal=True,label_visibility="collapsed")
     if st.button("✓ Uygula",key="apply_bg"):
-        bg,card,brd=bg_opts[bg_ch]
-        st.session_state["theme"].update({"bg_primary":bg,"bg_card":card,"border":brd})
+        bg, card, brd, txt, txt2, muted, is_light = bg_opts[bg_ch]
+        st.session_state["theme"].update({
+            "bg_primary": bg, "bg_card": card, "border": brd,
+            "txt_color": txt, "txt2_color": txt2, "muted_color": muted,
+            "is_light": is_light
+        })
         _prefs_save(user); st.rerun()
     st.markdown("##### 🔤 Yazı Boyutu")
     fs=st.slider("Gizli",12,20,int(st.session_state["theme"].get("font_size",15)),label_visibility="collapsed")
@@ -3196,6 +3375,17 @@ def page_settings(user):
         st.success("Kaydedildi.")
     if st.button("↺ Temayı Sıfırla",key="rst"):
         st.session_state["theme"]=DEFAULT_THEME.copy()
+    st.markdown("##### 🌐 Dil / Language")
+    lang_ch = st.selectbox("Gizli", ["Türkçe", "English (Coming Soon)"], label_visibility="collapsed")
+    if st.button("✓ Dili Kaydet"):
+        st.toast("Dil tercihi kaydedildi. (Tam destek yakında!)")
+        _prefs_save(user); st.rerun()
+    st.markdown("##### 💱 Para Birimi")
+    cur_opts = {"Dolar ($)": "$", "Türk Lirası (₺)": "₺", "Euro (€)": "€", "Sterlin (£)": "£"}
+    cur_idx = list(cur_opts.values()).index(st.session_state.get("currency", "$"))
+    ch_cur = st.selectbox("Gizli", list(cur_opts.keys()), index=cur_idx, label_visibility="collapsed", key="cur_sel")
+    if st.button("✓ Para Birimini Uygula", key="apply_cur"):
+        st.session_state["currency"] = cur_opts[ch_cur]
         _prefs_save(user); st.rerun()
 
 
@@ -3210,10 +3400,10 @@ def main():
         page_auth(); return
     user=st.session_state["user"]
     page=sidebar(user)
-    if   "Dashboard" in page: page_dashboard(user)
-    elif "Backtest"  in page: page_backtest()
-    elif "Canlı"     in page: page_live(user)
-    elif "Tema"      in page: page_settings(user)
+    if   "Anasayfa" in page: page_dashboard(user)
+    elif "Strateji" in page: page_backtest()
+    elif "Canlı"    in page: page_live(user)
+    elif "Ayarlar"  in page: page_settings(user)
     
 if __name__=="__main__":
     main()
